@@ -3,7 +3,12 @@
     <style name="Base.Theme.CyberGuard" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/primary</item>
+        <item name="editTextStyle">@style/CG_EditText</item>
     </style>
 
     <style name="Theme.CyberGuard" parent="Base.Theme.CyberGuard" />
+
+    <style name="CG_EditText" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/rounded_edittext_bg</item>
+    </style>
 </resources>

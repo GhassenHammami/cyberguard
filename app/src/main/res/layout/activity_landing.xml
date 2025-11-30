@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="24dp"
+    android:background="@color/background">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:elevation="8dp"
+        app:cardCornerRadius="70dp"
+        app:cardBackgroundColor="@color/white">
+
+        <ImageView
+            android:id="@+id/landing_logoImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:src="@drawable/common_full_open_on_phone"
+            android:contentDescription="App Logo"/>
+</androidx.cardview.widget.CardView>
+
+<!-- App Title -->
+    <TextView
+        android:id="@+id/landing_tvAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CyberGuard"
+        android:textColor="@color/primary"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp"/>
+
+    <!-- Small Descriptive Text -->
+    <TextView
+        android:id="@+id/landing_tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Cyber Security Companion"
+        android:textColor="@color/textLight"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp">
+
+        <Button
+            android:id="@+id/landing_btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:layout_marginBottom="16dp"
+            android:elevation="6dp"/>
+
+        <Button
+            android:id="@+id/landing_btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:elevation="6dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/landing_tvVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Version 1.0.0"
+        android:textColor="@color/textLight"
+        android:textSize="12sp" />
+
+</LinearLayout>
