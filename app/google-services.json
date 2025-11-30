@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "553258951278",
+    "project_id": "cyberguard-89d11",
+    "storage_bucket": "cyberguard-89d11.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553258951278:android:d381dcf2432b0ed4513c7f",
+        "android_client_info": {
+          "package_name": "com.example.cyberguard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdN8j-L7JzZGApagOfNsV7RWwfrF2TMhI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
