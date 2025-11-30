@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.cybersecuritycompanion"
+    namespace = "com.example.cyberguard"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.cybersecuritycompanion"
+        applicationId = "com.example.cyberguard"
         minSdk = 26
         targetSdk = 36
         versionCode = 1
