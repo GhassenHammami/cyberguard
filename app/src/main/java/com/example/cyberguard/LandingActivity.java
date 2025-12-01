@@ -2,14 +2,11 @@ package com.example.cyberguard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.cyberguard.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -24,8 +21,9 @@ public class LandingActivity extends AppCompatActivity {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            startActivity(new Intent(LandingActivity.this, DashboardActivity.class));
+            // startActivity(new Intent(LandingActivity.this, DrawerTestActivity.class));
             finish();
+            return;
         }
 
         Button btnLogin = findViewById(R.id.landing_btnLogin);

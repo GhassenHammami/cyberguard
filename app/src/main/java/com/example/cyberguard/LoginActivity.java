@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             startLoading();
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+                    // startActivity(new Intent(LoginActivity.this, DrawerTestActivity.class));
                     finish();
                 } else {
                     String message = "Login failed. Please try again.";
@@ -82,8 +82,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     showErrorDialog(message);
                 }
+                stopLoading();
             });
-            stopLoading();
         });
 
         setupVersion();

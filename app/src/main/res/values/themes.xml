@@ -11,4 +11,13 @@
     <style name="CG_EditText" parent="@android:style/Widget.EditText">
         <item name="android:background">@drawable/rounded_edittext_bg</item>
     </style>
+
+    <style name="Theme.CyberGuard.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.CyberGuard.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.CyberGuard.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
