@@ -86,18 +86,6 @@ public class LoginActivity extends AppCompatActivity {
             });
         });
 
-        setupVersion();
-    }
-
-    private void setupVersion() {
-        TextView tvVersion = findViewById(R.id.login_tvVersion);
-        try {
-            String versionName = getPackageManager()
-                    .getPackageInfo(getPackageName(), 0).versionName;
-            tvVersion.setText(getString(R.string.app_version) + " " + versionName);
-        } catch (Exception e) {
-            tvVersion.setText(getString(R.string.app_version));
-        }
     }
 
     private void showErrorDialog(String message) {

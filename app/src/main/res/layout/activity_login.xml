@@ -145,7 +145,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
-            android:text="Version 1.0.0"
+            android:text="@string/app_version"
             android:textColor="@color/textLight"
             android:textSize="12sp" />
     </LinearLayout>
