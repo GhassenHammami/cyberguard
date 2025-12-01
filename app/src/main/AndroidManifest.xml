@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CyberGuard">
         <activity
+            android:name=".DrawerActivity"
+            android:exported="false"
+            android:label="@string/title_activity_drawer"
+            android:theme="@style/Theme.CyberGuard.NoActionBar" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
