@@ -21,4 +21,6 @@
     <string name="menu_rate">Rate App</string>
     <string name="menu_privacy">Privacy Policy</string>
     <string name="menu_logout">Logout</string>
+    <string name="menu_logout_confirmation">Are you sure you want to logout?</string>
+
 </resources>

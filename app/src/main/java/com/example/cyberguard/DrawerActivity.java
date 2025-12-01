@@ -1,6 +1,8 @@
 package com.example.cyberguard;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
@@ -8,6 +10,8 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -27,6 +31,9 @@ public class DrawerActivity extends AppCompatActivity {
     private ActivityDrawerBinding binding;
     private NavigationView navigationView;
 
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +46,35 @@ public class DrawerActivity extends AppCompatActivity {
 
         DrawerLayout drawer = binding.drawerLayout;
         navigationView = binding.navView;
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_dashboard, R.id.nav_gallery, R.id.nav_slideshow).setOpenableLayout(drawer).build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_drawer);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_logout) {
+                showLogoutDialog();
+                drawer.closeDrawers();
+                return true;
+            } else if (id == R.id.nav_share) {
+                //
+                return true;
+            } else if (id == R.id.nav_rate) {
+                //
+                return true;
+            } else {
+                boolean handled = NavigationUI.onNavDestinationSelected(item, navController);
+                drawer.closeDrawers();
+                return handled;
+            }
+        });
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         loadUserInfoInDrawer();
     }
@@ -56,8 +86,6 @@ public class DrawerActivity extends AppCompatActivity {
     }
 
     protected void loadUserInfoInDrawer() {
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser == null || navigationView == null) return;
 
@@ -85,4 +113,15 @@ public class DrawerActivity extends AppCompatActivity {
             }
         });
     }
+
+    protected void showLogoutDialog() {
+        new AlertDialog.Builder(this).setTitle(getString(R.string.menu_logout)).setMessage(getString(R.string.menu_logout_confirmation)).setPositiveButton("Yes", (dialog, which) -> logout()).setNegativeButton("No", (dialog, which) -> dialog.dismiss()).show();
+    }
+
+    protected void logout() {
+        mAuth.signOut();
+        startActivity(new Intent(this, LandingActivity.class));
+        finish();
+    }
+
 }
