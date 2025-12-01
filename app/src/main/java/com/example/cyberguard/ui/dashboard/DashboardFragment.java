@@ -41,7 +41,7 @@ public class DashboardFragment extends Fragment {
 
     private void createFeatureCards(List<DashboardViewModel.Feature> features) {
         GridLayout grid = binding.dashboardGridFeatures;
-        grid.removeAllViews(); // Clear existing cards if any
+        grid.removeAllViews();
 
         int columnCount = 2;
 
@@ -66,7 +66,7 @@ public class DashboardFragment extends Fragment {
             GridLayout.LayoutParams params = new GridLayout.LayoutParams(rowSpec, colSpec);
             params.width = 0;
             params.height = GridLayout.LayoutParams.WRAP_CONTENT;
-            params.setMargins(6, 6, 6, 6);
+            params.setMargins(10, 10, 10, 10);
 
             cardView.setLayoutParams(params);
             grid.addView(cardView);
