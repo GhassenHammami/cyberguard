@@ -25,7 +25,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
-            android:src="@drawable/common_full_open_on_phone"
+            android:src="@drawable/ic_logo"
             android:contentDescription="App Logo"/>
 </androidx.cardview.widget.CardView>
 

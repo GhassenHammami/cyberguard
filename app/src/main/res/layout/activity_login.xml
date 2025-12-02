@@ -47,7 +47,7 @@
                 android:layout_height="80dp"
                 android:layout_gravity="center"
                 android:contentDescription="App Logo"
-                android:src="@drawable/common_full_open_on_phone" />
+                android:src="@drawable/ic_logo" />
         </androidx.cardview.widget.CardView>
 
         <TextView
