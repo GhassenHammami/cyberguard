@@ -80,4 +80,11 @@
         android:label="Phishing Training"
         tools:layout="@layout/fragment_phishing_training" />
 
+    <fragment
+        android:id="@+id/networkSecurityFragment"
+        android:name="com.example.cyberguard.ui.NetworkSecurityFragment"
+        android:label="Network Security"
+        tools:layout="@layout/fragment_network_security" />
+
+
 </navigation>

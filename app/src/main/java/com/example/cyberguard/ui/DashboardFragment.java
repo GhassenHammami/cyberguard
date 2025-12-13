@@ -121,6 +121,11 @@ public class DashboardFragment extends Fragment {
                         .navigate(R.id.phishingTrainingFragment);
                 break;
 
+            case "network_security":
+                NavHostFragment.findNavController(this).navigate(R.id.networkSecurityFragment);
+                break;
+
+
             default:
                 Toast.makeText(getContext(), "Coming soon: " + featureId, Toast.LENGTH_SHORT).show();
                 break;
