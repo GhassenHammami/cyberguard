@@ -103,6 +103,11 @@ public class DashboardFragment extends Fragment {
                         .navigate(R.id.breachCheckFragment);
                 break;
 
+            case "secure_notes":
+                NavHostFragment.findNavController(this)
+                        .navigate(R.id.unlockSecureNotesFragment);
+                break;
+
             default:
                 Toast.makeText(getContext(), "Coming soon: " + featureId, Toast.LENGTH_SHORT).show();
                 break;

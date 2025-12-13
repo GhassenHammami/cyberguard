@@ -29,4 +29,49 @@
         android:label="Breach Check"
         tools:layout="@layout/fragment_breach_check" />
 
+    <fragment
+        android:id="@+id/unlockSecureNotesFragment"
+        android:name="com.example.cyberguard.ui.secure_notes.UnlockSecureNotesFragment"
+        android:label="Unlock Notes"
+        tools:layout="@layout/fragment_secure_notes">
+
+        <action
+            android:id="@+id/action_unlockSecureNotesFragment_to_secureNotesFragment"
+            app:destination="@id/secureNotesFragment" />
+    </fragment>
+
+    <!-- Secure Notes: List -->
+    <fragment
+        android:id="@+id/secureNotesFragment"
+        android:name="com.example.cyberguard.ui.secure_notes.SecureNotesFragment"
+        android:label="Secure Notes"
+        tools:layout="@layout/fragment_secure_notes">
+
+        <action
+            android:id="@+id/action_secureNotesFragment_to_editSecureNoteFragment"
+            app:destination="@id/editSecureNoteFragment" />
+
+        <action
+            android:id="@+id/action_secureNotesFragment_to_unlockSecureNotesFragment"
+            app:destination="@id/unlockSecureNotesFragment" />
+    </fragment>
+
+    <!-- Secure Notes: Editor -->
+    <fragment
+        android:id="@+id/editSecureNoteFragment"
+        android:name="com.example.cyberguard.ui.secure_notes.EditSecureNoteFragment"
+        android:label="Edit Note"
+        tools:layout="@layout/fragment_edit_secure_note">
+
+        <!-- optional arg: noteId (null = create new) -->
+        <argument
+            android:name="noteId"
+            app:argType="string"
+            android:defaultValue="@null" />
+
+        <action
+            android:id="@+id/action_editSecureNoteFragment_to_unlockSecureNotesFragment"
+            app:destination="@id/unlockSecureNotesFragment" />
+    </fragment>
+
 </navigation>
