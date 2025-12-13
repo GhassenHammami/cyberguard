@@ -1,4 +1,4 @@
-package com.example.cyberguard.ui.dashboard;
+package com.example.cyberguard.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,43 +11,66 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.cyberguard.R;
 import com.example.cyberguard.databinding.FragmentDashboardBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
-    private DashboardViewModel viewModel;
+
+    private static class Feature {
+        final String title;
+        final String description;
+        final int iconRes;
+        final String featureId;
+
+        Feature(String title, String description, int iconRes, String featureId) {
+            this.title = title;
+            this.description = description;
+            this.iconRes = iconRes;
+            this.featureId = featureId;
+        }
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
-        viewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
 
-        observeFeatures();
+        List<Feature> features = buildFeatures();
+        createFeatureCards(features);
 
         return binding.getRoot();
     }
 
-    private void observeFeatures() {
-        viewModel.features.observe(getViewLifecycleOwner(), this::createFeatureCards);
+    private List<Feature> buildFeatures() {
+        List<Feature> featureList = new ArrayList<>();
+        featureList.add(new Feature("Breach Check", "Check if your accounts were breached", R.drawable.ic_shield, "breach_check"));
+        featureList.add(new Feature("Secure Notes", "Keep your notes safe", R.drawable.ic_lock, "secure_notes"));
+        featureList.add(new Feature("Cyber News", "Latest cybersecurity news", R.drawable.ic_newspaper, "cyber_news"));
+        featureList.add(new Feature("Phishing Training", "Learn to avoid phishing attacks", R.drawable.ic_email, "phishing_training"));
+        featureList.add(new Feature("Network Security", "Monitor your network", R.drawable.ic_wifi, "network_security"));
+        featureList.add(new Feature("Cyber Quiz", "Test your cybersecurity knowledge", R.drawable.ic_quiz, "cyber_quiz"));
+        featureList.add(new Feature("Security Checklist", "Step-by-step security guide", R.drawable.ic_checklist, "security_checklist"));
+        featureList.add(new Feature("Password Generator", "Generate strong passwords", R.drawable.ic_key, "password_generator"));
+        return featureList;
     }
 
-    private void createFeatureCards(List<DashboardViewModel.Feature> features) {
+    private void createFeatureCards(List<Feature> features) {
         GridLayout grid = binding.dashboardGridFeatures;
         grid.removeAllViews();
 
         int columnCount = 2;
-
         LayoutInflater inflater = LayoutInflater.from(getContext());
+
         for (int i = 0; i < features.size(); i++) {
-            DashboardViewModel.Feature feature = features.get(i);
+            Feature feature = features.get(i);
 
             View cardView = inflater.inflate(R.layout.item_feature_card, grid, false);
 
@@ -74,8 +97,18 @@ public class DashboardFragment extends Fragment {
     }
 
     private void onFeatureClick(String featureId) {
-        Toast.makeText(getContext(), "Opening " + featureId + "...", Toast.LENGTH_SHORT).show();
+        switch (featureId) {
+            case "breach_check":
+                NavHostFragment.findNavController(this)
+                        .navigate(R.id.breachCheckFragment);
+                break;
+
+            default:
+                Toast.makeText(getContext(), "Coming soon: " + featureId, Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
+
 
     @Override
     public void onDestroyView() {
