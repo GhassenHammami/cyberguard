@@ -74,4 +74,10 @@
             app:destination="@id/unlockSecureNotesFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/phishingTrainingFragment"
+        android:name="com.example.cyberguard.ui.PhishingTrainingFragment"
+        android:label="Phishing Training"
+        tools:layout="@layout/fragment_phishing_training" />
+
 </navigation>

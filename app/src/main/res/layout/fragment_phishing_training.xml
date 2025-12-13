@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phishing Training"
+            android:textStyle="bold"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Learn how to recognize phishing emails/SMS and what to do next."
+            android:textSize="14sp" />
+
+        <!-- SECTION: Red Flags -->
+        <TextView
+            android:id="@+id/pt_header_redflags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="12dp"
+            android:text="🚩 Red Flags (tap to expand)"
+            android:textStyle="bold"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:id="@+id/pt_body_redflags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:orientation="vertical"
+            android:background="@android:color/darker_gray"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="• Urgency / threats: “Act now”, “Account suspended”"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="• Sender looks off: misspelled domain, random address"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="• Link mismatch: the text says one site, the URL is different"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="• Attachments you didn’t expect: .zip, .exe, macro docs"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="• Asking for secrets: passwords, OTP codes, recovery phrases"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- SECTION: Common Examples -->
+        <TextView
+            android:id="@+id/pt_header_examples"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:padding="12dp"
+            android:text="🧪 Common Phishing Examples (tap to expand)"
+            android:textStyle="bold"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:id="@+id/pt_body_examples"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:orientation="vertical"
+            android:background="@android:color/darker_gray"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="• “Your package is waiting” SMS with a short link"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="• Fake bank alert: “Suspicious login, confirm now”"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="• Fake Microsoft/Google login page requesting password + OTP"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="• “Invoice attached” email from a random sender"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- SECTION: What to do -->
+        <TextView
+            android:id="@+id/pt_header_actions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:padding="12dp"
+            android:text="✅ What To Do If You Receive One (tap to expand)"
+            android:textStyle="bold"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:id="@+id/pt_body_actions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:orientation="vertical"
+            android:background="@android:color/darker_gray"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="• Don’t click links or open attachments"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="• Verify using official channels (type the URL yourself)"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="• Report it (email provider / company security contact)"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="• If you clicked: change password + enable 2FA immediately"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

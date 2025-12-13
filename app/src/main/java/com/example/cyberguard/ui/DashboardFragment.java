@@ -116,6 +116,11 @@ public class DashboardFragment extends Fragment {
                 startActivity(intent);
                 break;
 
+            case "phishing_training":
+                NavHostFragment.findNavController(this)
+                        .navigate(R.id.phishingTrainingFragment);
+                break;
+
             default:
                 Toast.makeText(getContext(), "Coming soon: " + featureId, Toast.LENGTH_SHORT).show();
                 break;
