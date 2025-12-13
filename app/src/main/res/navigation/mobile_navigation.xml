@@ -22,4 +22,11 @@
         android:name="com.example.cyberguard.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/breachCheckFragment"
+        android:name="com.example.cyberguard.ui.BreachCheckFragment"
+        android:label="Breach Check"
+        tools:layout="@layout/fragment_breach_check" />
+
 </navigation>
