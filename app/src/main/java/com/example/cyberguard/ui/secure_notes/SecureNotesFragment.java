@@ -67,7 +67,7 @@ public class SecureNotesFragment extends Fragment {
         fab.setOnClickListener(v -> openEditor(null));
 
         // If user enters directly without unlocking
-        if (!session.isUnlocked()) {
+        if (session.isUnlocked()) {
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_secureNotesFragment_to_unlockSecureNotesFragment);
             return root;

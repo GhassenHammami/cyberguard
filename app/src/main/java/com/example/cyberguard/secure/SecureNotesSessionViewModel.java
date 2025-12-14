@@ -14,14 +14,9 @@ public class SecureNotesSessionViewModel extends ViewModel {
     }
 
     public boolean isUnlocked() {
-        return key != null && saltB64 != null;
+        return key == null || saltB64 == null;
     }
 
     public SecretKey getKey() { return key; }
-    public String getSaltB64() { return saltB64; }
 
-    public void lock() {
-        key = null;
-        saltB64 = null;
-    }
 }

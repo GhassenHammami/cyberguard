@@ -33,7 +33,6 @@ import java.util.Locale;
 
 public class BreachCheckFragment extends Fragment {
 
-    private RadioGroup modeGroup;
     private LinearLayout emailSection, passwordSection;
 
     private EditText etEmail, etPassword;
@@ -49,7 +48,7 @@ public class BreachCheckFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_breach_check, container, false);
 
-        modeGroup = root.findViewById(R.id.bc_mode_group);
+        RadioGroup modeGroup = root.findViewById(R.id.bc_mode_group);
         emailSection = root.findViewById(R.id.bc_section_email);
         passwordSection = root.findViewById(R.id.bc_section_password);
 

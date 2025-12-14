@@ -100,7 +100,6 @@
                 android:padding="12dp" />
 
 
-
             <FrameLayout
                 android:id="@+id/login_btnContainer"
                 android:layout_width="match_parent"

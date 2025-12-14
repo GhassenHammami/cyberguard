@@ -13,8 +13,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Secure Notes"
-            android:textStyle="bold"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
@@ -63,8 +63,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:text="Error"
             android:textSize="13sp"
-            android:visibility="gone"
-            android:text="Error" />
+            android:visibility="gone" />
     </LinearLayout>
 </ScrollView>

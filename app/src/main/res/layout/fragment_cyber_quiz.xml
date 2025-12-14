@@ -14,8 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cyber Quiz"
-            android:textStyle="bold"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/cq_tv_progress"
@@ -39,8 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:layout_marginTop="10dp"
-            android:progress="0"
-            android:max="100" />
+            android:max="100"
+            android:progress="0" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -60,8 +60,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Category"
-                    android:textStyle="bold"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/cq_tv_question"
@@ -69,8 +69,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Question text here"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -100,8 +100,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Correct ✅"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/cq_tv_feedback_explain"
@@ -132,8 +132,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:text="Next"
-                android:enabled="false" />
+                android:enabled="false"
+                android:text="Next" />
         </LinearLayout>
 
     </LinearLayout>

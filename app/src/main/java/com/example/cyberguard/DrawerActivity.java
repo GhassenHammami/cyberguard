@@ -2,16 +2,12 @@ package com.example.cyberguard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.Menu;
 import android.widget.TextView;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -22,14 +18,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.cyberguard.databinding.ActivityDrawerBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
 
 public class DrawerActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private ActivityDrawerBinding binding;
     private NavigationView navigationView;
 
     private FirebaseAuth mAuth;
@@ -40,7 +34,7 @@ public class DrawerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityDrawerBinding.inflate(getLayoutInflater());
+        ActivityDrawerBinding binding = ActivityDrawerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarDrawer.toolbar);

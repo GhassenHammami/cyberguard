@@ -33,9 +33,8 @@ public class CyberQuizFragment extends Fragment {
 
     private TextView tvProgress, tvStats, tvCategory, tvQuestion, tvFeedbackTitle, tvFeedbackExplain;
     private ProgressBar progressBar;
-    private RecyclerView rvOptions;
     private View feedbackCard;
-    private Button btnNext, btnRestart;
+    private Button btnNext;
 
     private QuizStatsRepository statsRepo;
     private int bestScore = 0;
@@ -76,7 +75,7 @@ public class CyberQuizFragment extends Fragment {
         tvQuestion = root.findViewById(R.id.cq_tv_question);
         progressBar = root.findViewById(R.id.cq_progress_bar);
 
-        rvOptions = root.findViewById(R.id.cq_rv_options);
+        RecyclerView rvOptions = root.findViewById(R.id.cq_rv_options);
         rvOptions.setLayoutManager(new LinearLayoutManager(getContext()));
 
         feedbackCard = root.findViewById(R.id.cq_card_feedback);
@@ -84,7 +83,7 @@ public class CyberQuizFragment extends Fragment {
         tvFeedbackExplain = root.findViewById(R.id.cq_tv_feedback_explain);
 
         btnNext = root.findViewById(R.id.cq_btn_next);
-        btnRestart = root.findViewById(R.id.cq_btn_restart);
+        Button btnRestart = root.findViewById(R.id.cq_btn_restart);
 
         adapter = new OptionsAdapter(this::onOptionSelected);
         rvOptions.setAdapter(adapter);

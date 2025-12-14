@@ -7,8 +7,8 @@
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    app:cardCornerRadius="12dp"
     android:minHeight="165dp"
+    app:cardCornerRadius="12dp"
     app:cardElevation="8dp">
 
     <LinearLayout

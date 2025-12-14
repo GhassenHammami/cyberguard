@@ -14,15 +14,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Your Secure Notes"
-            android:textStyle="bold"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <ProgressBar
             android:id="@+id/sn_list_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
             android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -36,10 +36,10 @@
             android:id="@+id/sn_tv_empty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:gravity="center"
-            android:visibility="gone"
             android:text="No notes yet. Tap + to add one."
-            android:layout_marginTop="12dp" />
+            android:visibility="gone" />
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

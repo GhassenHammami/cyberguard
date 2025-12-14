@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:id="@+id/nav_main" android:checkableBehavior="single">
+    <group
+        android:id="@+id/nav_main"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_dashboard"
             android:icon="@drawable/ic_menu_dashboard"
@@ -16,7 +18,9 @@
 
     </group>
 
-    <group android:id="@+id/nav_info" android:checkableBehavior="single">
+    <group
+        android:id="@+id/nav_info"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_menu_about"
@@ -33,7 +37,9 @@
             android:title="@string/menu_privacy" />
     </group>
 
-    <group android:id="@+id/nav_actions" android:checkableBehavior="single">
+    <group
+        android:id="@+id/nav_actions"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_menu_share"
@@ -45,7 +51,9 @@
             android:title="@string/menu_rate" />
     </group>
 
-    <group android:id="@+id/nav_logout_group" android:checkableBehavior="single">
+    <group
+        android:id="@+id/nav_logout_group"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_logout"
             android:icon="@android:drawable/ic_menu_revert"

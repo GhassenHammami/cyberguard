@@ -76,8 +76,8 @@
 
         <argument
             android:name="noteId"
-            app:argType="string"
-            android:defaultValue="@null" />
+            android:defaultValue="@null"
+            app:argType="string" />
 
         <action
             android:id="@+id/action_editSecureNoteFragment_to_unlockSecureNotesFragment"

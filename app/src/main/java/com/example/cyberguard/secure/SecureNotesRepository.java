@@ -1,8 +1,5 @@
 package com.example.cyberguard.secure;
 
-import androidx.annotation.Nullable;
-
-import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.*;
 
@@ -22,6 +19,7 @@ public class SecureNotesRepository {
     }
 
     private DocumentReference userDoc() {
+        assert auth.getCurrentUser() != null;
         return db.collection("users").document(auth.getCurrentUser().getUid());
     }
 

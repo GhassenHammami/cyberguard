@@ -52,7 +52,7 @@ public class EditSecureNoteFragment extends Fragment {
         repo = new SecureNotesRepository();
         session = new ViewModelProvider(requireActivity()).get(SecureNotesSessionViewModel.class);
 
-        if (!session.isUnlocked()) {
+        if (session.isUnlocked()) {
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_editSecureNoteFragment_to_unlockSecureNotesFragment);
             return root;

@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.os.Build;
 import android.widget.ProgressBar;
 
 
@@ -36,7 +35,6 @@ public class PasswordGeneratorFragment extends Fragment {
     private TextView tvPassword, tvLengthLabel, tvStrength, tvStrengthHint;
     private SeekBar seekLength;
     private CheckBox cbUpper, cbLower, cbNumbers, cbSymbols;
-    private Button btnGenerate, btnCopy;
     private ProgressBar strengthBar;
 
 
@@ -68,8 +66,8 @@ public class PasswordGeneratorFragment extends Fragment {
         cbNumbers = v.findViewById(R.id.cbNumbers);
         cbSymbols = v.findViewById(R.id.cbSymbols);
 
-        btnGenerate = v.findViewById(R.id.btnGenerate);
-        btnCopy = v.findViewById(R.id.btnCopy);
+        Button btnGenerate = v.findViewById(R.id.btnGenerate);
+        Button btnCopy = v.findViewById(R.id.btnCopy);
 
         seekLength.setMax(MAX_LEN - MIN_LEN);
 
@@ -104,7 +102,7 @@ public class PasswordGeneratorFragment extends Fragment {
 
         btnCopy.setOnClickListener(vv -> {
             String pwd = tvPassword.getText().toString();
-            if (pwd == null || pwd.trim().isEmpty() || "Tap Generate".equals(pwd)) {
+            if (pwd.trim().isEmpty() || "Tap Generate".equals(pwd)) {
                 Toast.makeText(requireContext(), "Generate a password first", Toast.LENGTH_SHORT).show();
                 return;
             }

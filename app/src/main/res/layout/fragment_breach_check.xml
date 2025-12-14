@@ -16,7 +16,6 @@
             android:textStyle="bold"
             android:textSize="22sp" />
 
-        <!-- Mode Toggle -->
         <RadioGroup
             android:id="@+id/bc_mode_group"
             android:layout_width="match_parent"
@@ -40,7 +39,6 @@
                 android:text="Password" />
         </RadioGroup>
 
-        <!-- Email section -->
         <LinearLayout
             android:id="@+id/bc_section_email"
             android:layout_width="match_parent"
@@ -66,7 +64,6 @@
                 android:text="Check Email" />
         </LinearLayout>
 
-        <!-- Password section -->
         <LinearLayout
             android:id="@+id/bc_section_password"
             android:layout_width="match_parent"
@@ -102,7 +99,6 @@
             android:layout_marginTop="14dp"
             android:visibility="gone" />
 
-        <!-- Result card -->
         <LinearLayout
             android:id="@+id/bc_result_card"
             android:layout_width="match_parent"
