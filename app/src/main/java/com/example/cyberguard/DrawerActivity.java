@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.ListenerRegistration;
 
 public class DrawerActivity extends AppCompatActivity {
 
@@ -33,7 +34,7 @@ public class DrawerActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
-
+    private ListenerRegistration userListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,23 +96,35 @@ public class DrawerActivity extends AppCompatActivity {
         TextView tvFullName = headerView.findViewById(R.id.drawer_tvFullName);
         TextView tvEmail = headerView.findViewById(R.id.drawer_tvEmail);
 
-        if (tvEmail != null) {
+        if (tvEmail != null && currentUser.getEmail() != null) {
             tvEmail.setText(currentUser.getEmail());
         }
 
-        db.collection("users").document(currentUser.getUid()).get().addOnCompleteListener(task -> {
-            if (!task.isSuccessful()) {
-                return;
-            }
-            DocumentSnapshot document = task.getResult();
-            if (document != null && document.exists()) {
-                String fullName = document.getString("fullName");
+        if (userListener != null) {
+            userListener.remove();
+            userListener = null;
+        }
 
-                if (tvFullName != null && fullName != null && !fullName.isEmpty()) {
-                    tvFullName.setText(fullName);
-                }
-            }
-        });
+        userListener = db.collection("users")
+                .document(currentUser.getUid())
+                .addSnapshotListener((document, e) -> {
+                    if (e != null || document == null || !document.exists()) return;
+
+                    String fullName = document.getString("fullName");
+                    String email = document.getString("email");
+
+                    if (tvFullName != null && fullName != null && !fullName.trim().isEmpty()) {
+                        tvFullName.setText(fullName);
+                    }
+
+                    if (tvEmail != null) {
+                        if (email != null && !email.trim().isEmpty()) {
+                            tvEmail.setText(email);
+                        } else if (currentUser.getEmail() != null) {
+                            tvEmail.setText(currentUser.getEmail());
+                        }
+                    }
+                });
     }
 
     protected void showLogoutDialog() {
@@ -122,6 +135,15 @@ public class DrawerActivity extends AppCompatActivity {
         mAuth.signOut();
         startActivity(new Intent(this, LandingActivity.class));
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (userListener != null) {
+            userListener.remove();
+            userListener = null;
+        }
     }
 
 }
