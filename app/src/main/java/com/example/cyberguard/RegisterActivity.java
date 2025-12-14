@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cyberguard.util.NetworkUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.hbb20.CountryCodePicker;
@@ -131,6 +132,11 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
+        if (!NetworkUtils.hasInternetConnection(this)) {
+            showNoInternetDialog();
+            return;
+        }
+
         startLoading();
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
             if (task.isSuccessful()) {
@@ -212,6 +218,15 @@ public class RegisterActivity extends AppCompatActivity {
                 showErrorDialog("Registration Failed", "Error: " + errorCode);
                 break;
         }
+    }
+
+    private void showNoInternetDialog() {
+        new androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("No Internet Connection")
+                .setMessage("Internet connection is required to continue.")
+                .setCancelable(true)
+                .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
+                .show();
     }
 
 }

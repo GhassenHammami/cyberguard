@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cyberguard.util.NetworkUtils;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
@@ -59,6 +60,11 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
+            if (!NetworkUtils.hasInternetConnection(this)) {
+                showNoInternetDialog();
+                return;
+            }
+
             startLoading();
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
@@ -102,6 +108,15 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setEnabled(true);
         btnLogin.setText("Login");
         btnLoader.setVisibility(View.GONE);
+    }
+
+    private void showNoInternetDialog() {
+        new androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("No Internet Connection")
+                .setMessage("Internet connection is required to continue.")
+                .setCancelable(true)
+                .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
+                .show();
     }
 
 }

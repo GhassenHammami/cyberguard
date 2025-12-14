@@ -21,6 +21,11 @@ public class LandingActivity extends AppCompatActivity {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
+            if (!com.example.cyberguard.util.NetworkUtils.hasInternetConnection(this)) {
+                showInternetRequiredAndClose();
+                return;
+            }
+
             startActivity(new Intent(LandingActivity.this, DrawerActivity.class));
             finish();
             return;
@@ -29,25 +34,15 @@ public class LandingActivity extends AppCompatActivity {
         Button btnLogin = findViewById(R.id.landing_btnLogin);
         Button btnRegister = findViewById(R.id.landing_btnRegister);
 
-        btnLogin.setOnClickListener(view ->
-                startActivity(new Intent(LandingActivity.this, LoginActivity.class))
-        );
+        btnLogin.setOnClickListener(view -> startActivity(new Intent(LandingActivity.this, LoginActivity.class)));
 
-        btnRegister.setOnClickListener(view ->
-                startActivity(new Intent(LandingActivity.this, RegisterActivity.class))
-        );
-
-        setupVersion();
+        btnRegister.setOnClickListener(view -> startActivity(new Intent(LandingActivity.this, RegisterActivity.class)));
     }
 
-    private void setupVersion() {
-        TextView tvVersion = findViewById(R.id.landing_tvVersion);
-        try {
-            String versionName = getPackageManager()
-                    .getPackageInfo(getPackageName(), 0).versionName;
-            tvVersion.setText(getString(R.string.app_version) + " " + versionName);
-        } catch (Exception e) {
-            tvVersion.setText(getString(R.string.app_version));
-        }
+    private void showInternetRequiredAndClose() {
+        new android.app.AlertDialog.Builder(this).setTitle("Internet connection required").setMessage("Please enable Wi-Fi or mobile data to continue.").setCancelable(false).setPositiveButton("Close", (dialog, which) -> {
+            dialog.dismiss();
+            finishAffinity();
+        }).show();
     }
 }

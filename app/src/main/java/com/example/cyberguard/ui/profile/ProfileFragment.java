@@ -7,11 +7,13 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.cyberguard.R;
 import com.example.cyberguard.databinding.FragmentProfileBinding;
+import com.example.cyberguard.util.NetworkUtils;
 
 public class ProfileFragment extends Fragment {
 
@@ -28,7 +30,6 @@ public class ProfileFragment extends Fragment {
         setupObservers();
         setupClickListeners();
         viewModel.loadUserData();
-
         setFieldsEditable(false);
 
         return binding.getRoot();
@@ -38,10 +39,13 @@ public class ProfileFragment extends Fragment {
         viewModel.fullName.observe(getViewLifecycleOwner(), s -> binding.profileEtFullName.setText(s));
         viewModel.email.observe(getViewLifecycleOwner(), s -> binding.profileEtEmail.setText(s));
         viewModel.phone.observe(getViewLifecycleOwner(), s -> binding.profileEtPhone.setText(s));
+
         viewModel.isLoading.observe(getViewLifecycleOwner(), loading -> {
             binding.profileProgressBar.setVisibility(loading ? View.VISIBLE : View.GONE);
             binding.profileTvSave.setEnabled(!loading);
+            binding.profileTvEdit.setEnabled(!loading);
         });
+
         viewModel.message.observe(getViewLifecycleOwner(), msg -> {
             toggleEditMode();
             if (msg != null) Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
@@ -49,8 +53,41 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setupClickListeners() {
-        binding.profileTvEdit.setOnClickListener(v -> toggleEditMode());
-        binding.profileTvSave.setOnClickListener(v -> viewModel.saveProfile(binding.profileEtFullName.getText().toString(), binding.profileEtPhone.getText().toString()));
+
+        binding.profileTvEdit.setOnClickListener(v -> {
+            if (!isEditMode && !hasInternet()) {
+                showNoInternetDialog();
+                return;
+            }
+            toggleEditMode();
+        });
+
+        binding.profileTvSave.setOnClickListener(v -> {
+            if (!hasInternet()) {
+                showNoInternetDialog();
+                return;
+            }
+
+            viewModel.saveProfile(
+                    binding.profileEtFullName.getText().toString(),
+                    binding.profileEtPhone.getText().toString()
+            );
+        });
+    }
+
+    private boolean hasInternet() {
+        return NetworkUtils.hasInternetConnection(requireContext());
+    }
+
+    private void showNoInternetDialog() {
+        if (!isAdded()) return;
+
+        new AlertDialog.Builder(requireContext())
+                .setTitle("No Internet Connection")
+                .setMessage("Internet connection is required to continue.")
+                .setCancelable(true)
+                .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
+                .show();
     }
 
     private void toggleEditMode() {

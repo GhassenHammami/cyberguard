@@ -17,9 +17,19 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.cyberguard.R;
 import com.example.cyberguard.databinding.FragmentDashboardBinding;
+import com.example.cyberguard.util.NetworkUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
+import android.os.Build;
+
 
 public class DashboardFragment extends Fragment {
 
@@ -30,14 +40,18 @@ public class DashboardFragment extends Fragment {
         final String description;
         final int iconRes;
         final String featureId;
+        final boolean requiresInternet;
 
-        Feature(String title, String description, int iconRes, String featureId) {
+        Feature(String title, String description, int iconRes, String featureId, boolean requiresInternet) {
             this.title = title;
             this.description = description;
             this.iconRes = iconRes;
             this.featureId = featureId;
+            this.requiresInternet = requiresInternet;
         }
     }
+
+    private final java.util.Map<String, Feature> featureMap = new java.util.HashMap<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,6 +59,12 @@ public class DashboardFragment extends Fragment {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
 
         List<Feature> features = buildFeatures();
+
+        featureMap.clear();
+        for (Feature f : features) {
+            featureMap.put(f.featureId, f);
+        }
+
         createFeatureCards(features);
 
         return binding.getRoot();
@@ -52,13 +72,13 @@ public class DashboardFragment extends Fragment {
 
     private List<Feature> buildFeatures() {
         List<Feature> featureList = new ArrayList<>();
-        featureList.add(new Feature("Breach Check", "Check if your accounts were breached", R.drawable.ic_shield, "breach_check"));
-        featureList.add(new Feature("Secure Notes", "Keep your notes safe", R.drawable.ic_lock, "secure_notes"));
-        featureList.add(new Feature("Cyber News", "Latest cybersecurity news", R.drawable.ic_newspaper, "cyber_news"));
-        featureList.add(new Feature("Phishing Training", "Learn to avoid phishing attacks", R.drawable.ic_email, "phishing_training"));
-        featureList.add(new Feature("Network Security", "Monitor your network", R.drawable.ic_wifi, "network_security"));
-        featureList.add(new Feature("Cyber Quiz", "Test your cybersecurity knowledge", R.drawable.ic_quiz, "cyber_quiz"));
-        featureList.add(new Feature("Password Generator", "Generate strong passwords", R.drawable.ic_key, "password_generator"));
+        featureList.add(new Feature("Breach Check", "Check if your accounts were breached", R.drawable.ic_shield, "breach_check", true));
+        featureList.add(new Feature("Secure Notes", "Keep your notes safe", R.drawable.ic_lock, "secure_notes", true));
+        featureList.add(new Feature("Cyber News", "Latest cybersecurity news", R.drawable.ic_newspaper, "cyber_news", true));
+        featureList.add(new Feature("Phishing Training", "Learn to avoid phishing attacks", R.drawable.ic_email, "phishing_training", false));
+        featureList.add(new Feature("Network Security", "Monitor your network", R.drawable.ic_wifi, "network_security", true));
+        featureList.add(new Feature("Cyber Quiz", "Test your cybersecurity knowledge", R.drawable.ic_quiz, "cyber_quiz", false));
+        featureList.add(new Feature("Password Generator", "Generate strong passwords", R.drawable.ic_key, "password_generator", false));
         return featureList;
     }
 
@@ -89,7 +109,7 @@ public class DashboardFragment extends Fragment {
             GridLayout.Spec colSpec;
             if ("password_generator".equals(feature.featureId)) {
                 // Span across both columns (full row)
-                colSpec = GridLayout.spec(0, columnCount, 1f); // start at col 0, span 2
+                colSpec = GridLayout.spec(0, columnCount, 1f);
             } else {
                 colSpec = GridLayout.spec(i % columnCount, 1f);
             }
@@ -105,6 +125,11 @@ public class DashboardFragment extends Fragment {
     }
 
     private void onFeatureClick(String featureId) {
+        Feature f = featureMap.get(featureId);
+        if (f != null && f.requiresInternet && !NetworkUtils.hasInternetConnection(requireContext())) {
+            showNoInternetDialog();
+            return;
+        }
         switch (featureId) {
             case "breach_check":
                 NavHostFragment.findNavController(this).navigate(R.id.breachCheckFragment);
@@ -141,6 +166,12 @@ public class DashboardFragment extends Fragment {
                 Toast.makeText(getContext(), "Coming soon: " + featureId, Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    private void showNoInternetDialog() {
+        if (getContext() == null) return;
+
+        new AlertDialog.Builder(requireContext()).setTitle("No Internet Connection").setMessage("Please check your Wi-Fi or mobile data and try again.").setPositiveButton("OK", (dialog, which) -> dialog.dismiss()).show();
     }
 
 
