@@ -1,0 +1,402 @@
+[
+  {
+    "id": "q1",
+    "category": "Passwords",
+    "question": "Which password is strongest?",
+    "options": ["Summer2025!", "P@ssw0rd", "CorrectHorseBatteryStaple", "12345678"],
+    "answerIndex": 2,
+    "explanation": "Long unique passphrases are typically stronger than short common patterns."
+  },
+  {
+    "id": "q2",
+    "category": "Phishing",
+    "question": "What is a common phishing red flag?",
+    "options": ["A personalized greeting", "Urgent request to act immediately", "HTTPS in the URL", "Company logo in the email"],
+    "answerIndex": 1,
+    "explanation": "Attackers often create urgency to make you act without thinking."
+  },
+  {
+    "id": "q3",
+    "category": "2FA",
+    "question": "Which 2FA method is usually most secure?",
+    "options": ["SMS code", "Email code", "Authenticator app (TOTP)", "Security questions"],
+    "answerIndex": 2,
+    "explanation": "Authenticator apps are harder to intercept than SMS/email in many scenarios."
+  },
+  {
+    "id": "q4",
+    "category": "Updates",
+    "question": "Why are software updates important for security?",
+    "options": ["They add new emojis", "They patch known vulnerabilities", "They make your device heavier", "They only change UI"],
+    "answerIndex": 1,
+    "explanation": "Updates often fix security flaws attackers actively exploit."
+  },
+  {
+    "id": "q5",
+    "category": "Wi-Fi",
+    "question": "Which Wi-Fi network is riskiest for banking?",
+    "options": ["Your home WPA2 network", "A public open Wi-Fi with no password", "A WPA3 enterprise network", "Your phone hotspot"],
+    "answerIndex": 1,
+    "explanation": "Open public Wi-Fi is easier for attackers to monitor or tamper with."
+  },
+  {
+    "id": "q6",
+    "category": "Malware",
+    "question": "Which is a common sign of malware on a phone?",
+    "options": ["Battery drains unusually fast", "Screen brightness works", "You can receive calls", "Clock shows time"],
+    "answerIndex": 0,
+    "explanation": "Malware can run background tasks that drain battery and data."
+  },
+  {
+    "id": "q7",
+    "category": "Social Engineering",
+    "question": "Social engineering mainly targets…",
+    "options": ["Hardware chips", "Human psychology", "Power cables", "Screen resolution"],
+    "answerIndex": 1,
+    "explanation": "It manipulates people into revealing info or taking unsafe actions."
+  },
+  {
+    "id": "q8",
+    "category": "Links",
+    "question": "What is the safest way to open a bank website from an email?",
+    "options": ["Click the email link", "Reply and ask for a link", "Type the official URL yourself", "Use a shortened link"],
+    "answerIndex": 2,
+    "explanation": "Typing the official URL reduces risk of landing on a fake site."
+  },
+  {
+    "id": "q9",
+    "category": "Passwords",
+    "question": "Password reuse is dangerous because…",
+    "options": ["It makes typing faster", "One breach can compromise multiple accounts", "It increases storage", "It prevents login"],
+    "answerIndex": 1,
+    "explanation": "Credential stuffing attacks reuse leaked passwords on other sites."
+  },
+  {
+    "id": "q10",
+    "category": "Backups",
+    "question": "Why are backups important for ransomware defense?",
+    "options": ["They make Wi-Fi faster", "They allow restoring data without paying", "They block phishing links", "They encrypt your keyboard"],
+    "answerIndex": 1,
+    "explanation": "Offline/secure backups help recover after ransomware incidents."
+  },
+  {
+    "id": "q11",
+    "category": "Email",
+    "question": "A sender email address like support@paypaI.com (capital i) is an example of…",
+    "options": ["MFA", "Typosquatting", "Hashing", "Firewalling"],
+    "answerIndex": 1,
+    "explanation": "Attackers use look-alike domains to trick users."
+  },
+  {
+    "id": "q12",
+    "category": "Encryption",
+    "question": "Encryption mainly provides…",
+    "options": ["Confidentiality", "Faster downloads", "Bigger batteries", "More RAM"],
+    "answerIndex": 0,
+    "explanation": "Encryption protects data from being read by unauthorized parties."
+  },
+  {
+    "id": "q13",
+    "category": "Browser",
+    "question": "What does the padlock/HTTPS indicate?",
+    "options": ["The site is definitely safe", "Traffic is encrypted to the site", "No malware exists", "The company is verified"],
+    "answerIndex": 1,
+    "explanation": "HTTPS encrypts transport, but doesn't guarantee the site is legitimate."
+  },
+  {
+    "id": "q14",
+    "category": "Identity",
+    "question": "Which info should you avoid posting publicly to reduce identity theft risk?",
+    "options": ["Your favorite color", "Your full DOB + address", "A meme", "A song you like"],
+    "answerIndex": 1,
+    "explanation": "Personal identifiers can be used for account takeovers and fraud."
+  },
+  {
+    "id": "q15",
+    "category": "Apps",
+    "question": "Safest place to download Android apps is usually…",
+    "options": ["Random APK sites", "Play Store", "Unknown Telegram channels", "Email attachments"],
+    "answerIndex": 1,
+    "explanation": "Official stores apply some checks and scanning (not perfect, but safer)."
+  },
+  {
+    "id": "q16",
+    "category": "Permissions",
+    "question": "If a flashlight app requests SMS permission, you should…",
+    "options": ["Allow immediately", "Deny and reconsider installing", "Disable Wi-Fi", "Restart phone"],
+    "answerIndex": 1,
+    "explanation": "Unneeded permissions can indicate risky or malicious behavior."
+  },
+  {
+    "id": "q17",
+    "category": "2FA",
+    "question": "What is SIM swapping mainly used for?",
+    "options": ["Faster 5G", "Intercepting SMS codes", "Better battery life", "Stopping spam calls"],
+    "answerIndex": 1,
+    "explanation": "Attackers hijack your number to receive SMS-based OTPs."
+  },
+  {
+    "id": "q18",
+    "category": "Passwords",
+    "question": "A password manager helps because it…",
+    "options": ["Creates unique passwords for each site", "Blocks all viruses", "Turns off ads", "Makes CPU faster"],
+    "answerIndex": 0,
+    "explanation": "Unique random passwords reduce the impact of any single breach."
+  },
+  {
+    "id": "q19",
+    "category": "Ransomware",
+    "question": "Best immediate action if you suspect ransomware on a PC?",
+    "options": ["Keep using it normally", "Disconnect from network", "Post on social media", "Delete System32"],
+    "answerIndex": 1,
+    "explanation": "Disconnecting can reduce spread to other devices."
+  },
+  {
+    "id": "q20",
+    "category": "Files",
+    "question": "Which attachment is riskiest from an unknown sender?",
+    "options": ["photo.jpg", "invoice.zip", "notes.txt", "readme.pdf"],
+    "answerIndex": 1,
+    "explanation": "Archives can hide executables or malicious scripts."
+  },
+  {
+    "id": "q21",
+    "category": "OSINT",
+    "question": "OSINT stands for…",
+    "options": ["Open Source Intelligence", "Offline Secure Internet", "Operational System Input", "Online Security Interface"],
+    "answerIndex": 0,
+    "explanation": "OSINT is intelligence gathered from public sources."
+  },
+  {
+    "id": "q22",
+    "category": "Wi-Fi",
+    "question": "What is a captive portal?",
+    "options": ["A malware scanner", "A login page shown before internet access", "A VPN server", "A password manager"],
+    "answerIndex": 1,
+    "explanation": "Hotels/airports often require a portal acceptance before full access."
+  },
+  {
+    "id": "q23",
+    "category": "Privacy",
+    "question": "Why use Private DNS / DNS-over-TLS?",
+    "options": ["To encrypt DNS queries", "To speed up RAM", "To change your wallpaper", "To remove ads"],
+    "answerIndex": 0,
+    "explanation": "Encrypted DNS reduces spying/tampering on DNS lookups."
+  },
+  {
+    "id": "q24",
+    "category": "Network",
+    "question": "A VPN mainly helps by…",
+    "options": ["Encrypting traffic between you and the VPN server", "Deleting viruses", "Making passwords unnecessary", "Upgrading your router"],
+    "answerIndex": 0,
+    "explanation": "VPNs protect traffic on untrusted networks up to the VPN endpoint."
+  },
+  {
+    "id": "q25",
+    "category": "Phishing",
+    "question": "Which is safest if an email claims 'unusual login detected'?",
+    "options": ["Click the provided link", "Reply with your password", "Open your app/website directly and check", "Forward to everyone"],
+    "answerIndex": 2,
+    "explanation": "Verify via official channels, not links in the email."
+  },
+  {
+    "id": "q26",
+    "category": "Passwords",
+    "question": "What is credential stuffing?",
+    "options": ["Guessing passwords by hand", "Reusing leaked credentials on many sites", "Encrypting passwords", "Changing usernames"],
+    "answerIndex": 1,
+    "explanation": "Attackers automate logins with breached username/password pairs."
+  },
+  {
+    "id": "q27",
+    "category": "Mobile",
+    "question": "Which is safest for app authentication?",
+    "options": ["No lock screen", "PIN/Password + biometrics", "Same 4-digit PIN everywhere", "Swipe-only lock"],
+    "answerIndex": 1,
+    "explanation": "A strong lock screen reduces device takeover risk."
+  },
+  {
+    "id": "q28",
+    "category": "Web",
+    "question": "What is a 'drive-by download'?",
+    "options": ["Downloading music", "Malware download triggered by visiting a site", "Backing up files", "Streaming video"],
+    "answerIndex": 1,
+    "explanation": "Some sites exploit vulnerabilities to download malware without clear consent."
+  },
+  {
+    "id": "q29",
+    "category": "Accounts",
+    "question": "Best practice after a major breach announcement?",
+    "options": ["Ignore it", "Change password and enable 2FA", "Share your password", "Disable updates"],
+    "answerIndex": 1,
+    "explanation": "Changing credentials + 2FA reduces account takeover risk."
+  },
+  {
+    "id": "q30",
+    "category": "Email",
+    "question": "DMARC/SPF/DKIM are mainly related to…",
+    "options": ["Wi-Fi encryption", "Email authentication", "Disk formatting", "Bluetooth pairing"],
+    "answerIndex": 1,
+    "explanation": "They help reduce email spoofing by validating sending domains."
+  },
+  {
+    "id": "q31",
+    "category": "Passwords",
+    "question": "What does 'k-anonymity' help with in password breach checks?",
+    "options": ["Sharing full password safely", "Checking exposure without sending full hash", "Making passwords shorter", "Removing encryption"],
+    "answerIndex": 1,
+    "explanation": "Only a hash prefix is shared, reducing leakage risk."
+  },
+  {
+    "id": "q32",
+    "category": "Security Basics",
+    "question": "The principle of least privilege means…",
+    "options": ["Give apps all permissions", "Give only necessary access", "Use one password everywhere", "Disable updates"],
+    "answerIndex": 1,
+    "explanation": "Limiting privileges reduces damage if something is compromised."
+  },
+  {
+    "id": "q33",
+    "category": "Threats",
+    "question": "A zero-day vulnerability is…",
+    "options": ["Already fully patched", "Unknown to vendor or unpatched when exploited", "A fake virus", "A safe feature"],
+    "answerIndex": 1,
+    "explanation": "Zero-days are exploited before official fixes are available."
+  },
+  {
+    "id": "q34",
+    "category": "Web",
+    "question": "Which is a sign of a fake login page?",
+    "options": ["URL domain doesn't match the real company", "The page has a logo", "There is a login form", "It uses a font"],
+    "answerIndex": 0,
+    "explanation": "Attackers often host look-alike pages on unrelated domains."
+  },
+  {
+    "id": "q35",
+    "category": "Data",
+    "question": "Why should you lock your SIM with a PIN?",
+    "options": ["To block app installs", "To reduce SIM swap/physical SIM abuse", "To improve Wi-Fi", "To encrypt photos"],
+    "answerIndex": 1,
+    "explanation": "SIM PIN adds a barrier if someone accesses your SIM physically."
+  },
+  {
+    "id": "q36",
+    "category": "Passwords",
+    "question": "What is the safest way to store a password list?",
+    "options": ["Plain text notes", "A password manager", "A public spreadsheet", "In SMS drafts"],
+    "answerIndex": 1,
+    "explanation": "Password managers store encrypted vaults and encourage unique passwords."
+  },
+  {
+    "id": "q37",
+    "category": "Cloud",
+    "question": "What does 'shared responsibility model' mean in cloud security?",
+    "options": ["Cloud provider secures everything", "Customer secures everything", "Security duties are split between provider and customer", "No one is responsible"],
+    "answerIndex": 2,
+    "explanation": "Providers handle some layers; customers handle configuration, identities, data, etc."
+  },
+  {
+    "id": "q38",
+    "category": "Phishing",
+    "question": "Which message is most suspicious?",
+    "options": ["Your friend says hello", "Invoice overdue: open attached .zip now", "Weekly newsletter", "Password manager reminder"],
+    "answerIndex": 1,
+    "explanation": "Unexpected urgent invoices + risky attachments are common lures."
+  },
+  {
+    "id": "q39",
+    "category": "Network",
+    "question": "What is ARP spoofing?",
+    "options": ["A method to speed Wi-Fi", "Tricking devices about MAC/IP mapping to intercept traffic", "A new router standard", "A password hashing method"],
+    "answerIndex": 1,
+    "explanation": "Attackers can impersonate gateways on LANs to sniff/alter traffic."
+  },
+  {
+    "id": "q40",
+    "category": "Security Basics",
+    "question": "Which is the best practice for account recovery?",
+    "options": ["Use easily guessed security questions", "Use recovery codes and keep them safe", "Share recovery email publicly", "Disable 2FA"],
+    "answerIndex": 1,
+    "explanation": "Recovery codes are safer than guessable personal questions."
+  },
+  {
+    "id": "q41",
+    "category": "Mobile",
+    "question": "Why avoid USB 'charging' from unknown public ports?",
+    "options": ["It slows charging", "Risk of data access or malicious behavior (juice jacking)", "It breaks the phone instantly", "It increases storage"],
+    "answerIndex": 1,
+    "explanation": "Unknown ports can expose data channels; use a power-only adapter if needed."
+  },
+  {
+    "id": "q42",
+    "category": "Privacy",
+    "question": "What does 'metadata' mean in communications?",
+    "options": ["Only the message text", "Data about data (who/when/where)", "Your password", "Your antivirus"],
+    "answerIndex": 1,
+    "explanation": "Metadata can reveal patterns even without reading message content."
+  },
+  {
+    "id": "q43",
+    "category": "Web",
+    "question": "Why is using a unique password per site important?",
+    "options": ["It looks cool", "Stops credential reuse after one breach", "It makes logins slower", "It disables phishing"],
+    "answerIndex": 1,
+    "explanation": "Unique passwords prevent one breach from cascading to other accounts."
+  },
+  {
+    "id": "q44",
+    "category": "Malware",
+    "question": "What is a trojan?",
+    "options": ["A type of firewall", "Malicious software disguised as legitimate", "A secure protocol", "A password rule"],
+    "answerIndex": 1,
+    "explanation": "Trojans trick users into installing them by pretending to be safe."
+  },
+  {
+    "id": "q45",
+    "category": "Security Basics",
+    "question": "What is the main goal of a firewall?",
+    "options": ["Store passwords", "Control incoming/outgoing network traffic", "Increase screen brightness", "Encrypt your keyboard"],
+    "answerIndex": 1,
+    "explanation": "Firewalls enforce network rules to reduce unauthorized access."
+  },
+  {
+    "id": "q46",
+    "category": "Email",
+    "question": "If you receive an OTP code you did not request, you should…",
+    "options": ["Send it to the requester", "Ignore and check account activity immediately", "Post it online", "Disable your phone"],
+    "answerIndex": 1,
+    "explanation": "It can indicate someone is trying to log in to your account."
+  },
+  {
+    "id": "q47",
+    "category": "Passwords",
+    "question": "What is brute force?",
+    "options": ["Guessing passwords systematically", "Updating apps", "Encrypting files", "Blocking ads"],
+    "answerIndex": 0,
+    "explanation": "Brute force tries many guesses until one works."
+  },
+  {
+    "id": "q48",
+    "category": "Network",
+    "question": "Which is safer on public Wi-Fi for sensitive activity?",
+    "options": ["No VPN + random DNS", "VPN enabled + Private DNS", "Open Wi-Fi + SMS login only", "Using HTTP websites"],
+    "answerIndex": 1,
+    "explanation": "VPN and encrypted DNS reduce exposure on untrusted networks."
+  },
+  {
+    "id": "q49",
+    "category": "Secure Notes",
+    "question": "In end-to-end encryption, the server should store…",
+    "options": ["Plaintext notes", "Only encrypted notes and non-secret parameters (salt/IV)", "The user's master password", "A decrypted copy for support"],
+    "answerIndex": 1,
+    "explanation": "The server stores ciphertext; only the client with the password can decrypt."
+  },
+  {
+    "id": "q50",
+    "category": "Security Basics",
+    "question": "What is the safest reaction to a suspicious link?",
+    "options": ["Click it quickly", "Open it in incognito", "Do not click; verify independently", "Forward to friends"],
+    "answerIndex": 2,
+    "explanation": "Avoid clicking and verify via official sources/URLs you type yourself."
+  }
+]

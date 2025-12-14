@@ -86,5 +86,11 @@
         android:label="Network Security"
         tools:layout="@layout/fragment_network_security" />
 
+    <fragment
+        android:id="@+id/cyberQuizFragment"
+        android:name="com.example.cyberguard.ui.CyberQuizFragment"
+        android:label="Cyber Quiz"
+        tools:layout="@layout/fragment_cyber_quiz" />
+
 
 </navigation>
