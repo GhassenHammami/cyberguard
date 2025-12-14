@@ -40,7 +40,6 @@
             app:destination="@id/secureNotesFragment" />
     </fragment>
 
-    <!-- Secure Notes: List -->
     <fragment
         android:id="@+id/secureNotesFragment"
         android:name="com.example.cyberguard.ui.secure_notes.SecureNotesFragment"
@@ -56,14 +55,12 @@
             app:destination="@id/unlockSecureNotesFragment" />
     </fragment>
 
-    <!-- Secure Notes: Editor -->
     <fragment
         android:id="@+id/editSecureNoteFragment"
         android:name="com.example.cyberguard.ui.secure_notes.EditSecureNoteFragment"
         android:label="Edit Note"
         tools:layout="@layout/fragment_edit_secure_note">
 
-        <!-- optional arg: noteId (null = create new) -->
         <argument
             android:name="noteId"
             app:argType="string"
@@ -91,6 +88,12 @@
         android:name="com.example.cyberguard.ui.CyberQuizFragment"
         android:label="Cyber Quiz"
         tools:layout="@layout/fragment_cyber_quiz" />
+
+    <fragment
+        android:id="@+id/passwordGeneratorFragment"
+        android:name="com.example.cyberguard.ui.PasswordGeneratorFragment"
+        android:label="Password Generator"
+        tools:layout="@layout/fragment_password_generator" />
 
 
 </navigation>

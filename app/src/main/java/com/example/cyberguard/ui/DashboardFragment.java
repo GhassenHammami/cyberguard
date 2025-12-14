@@ -40,8 +40,7 @@ public class DashboardFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
 
@@ -59,7 +58,6 @@ public class DashboardFragment extends Fragment {
         featureList.add(new Feature("Phishing Training", "Learn to avoid phishing attacks", R.drawable.ic_email, "phishing_training"));
         featureList.add(new Feature("Network Security", "Monitor your network", R.drawable.ic_wifi, "network_security"));
         featureList.add(new Feature("Cyber Quiz", "Test your cybersecurity knowledge", R.drawable.ic_quiz, "cyber_quiz"));
-        featureList.add(new Feature("Security Checklist", "Step-by-step security guide", R.drawable.ic_checklist, "security_checklist"));
         featureList.add(new Feature("Password Generator", "Generate strong passwords", R.drawable.ic_key, "password_generator"));
         return featureList;
     }
@@ -87,7 +85,15 @@ public class DashboardFragment extends Fragment {
             cardView.setOnClickListener(v -> onFeatureClick(feature.featureId));
 
             GridLayout.Spec rowSpec = GridLayout.spec(i / columnCount, 1f);
-            GridLayout.Spec colSpec = GridLayout.spec(i % columnCount, 1f);
+
+            GridLayout.Spec colSpec;
+            if ("password_generator".equals(feature.featureId)) {
+                // Span across both columns (full row)
+                colSpec = GridLayout.spec(0, columnCount, 1f); // start at col 0, span 2
+            } else {
+                colSpec = GridLayout.spec(i % columnCount, 1f);
+            }
+
             GridLayout.LayoutParams params = new GridLayout.LayoutParams(rowSpec, colSpec);
             params.width = 0;
             params.height = GridLayout.LayoutParams.WRAP_CONTENT;
@@ -101,13 +107,11 @@ public class DashboardFragment extends Fragment {
     private void onFeatureClick(String featureId) {
         switch (featureId) {
             case "breach_check":
-                NavHostFragment.findNavController(this)
-                        .navigate(R.id.breachCheckFragment);
+                NavHostFragment.findNavController(this).navigate(R.id.breachCheckFragment);
                 break;
 
             case "secure_notes":
-                NavHostFragment.findNavController(this)
-                        .navigate(R.id.unlockSecureNotesFragment);
+                NavHostFragment.findNavController(this).navigate(R.id.unlockSecureNotesFragment);
                 break;
 
             case "cyber_news":
@@ -117,8 +121,7 @@ public class DashboardFragment extends Fragment {
                 break;
 
             case "phishing_training":
-                NavHostFragment.findNavController(this)
-                        .navigate(R.id.phishingTrainingFragment);
+                NavHostFragment.findNavController(this).navigate(R.id.phishingTrainingFragment);
                 break;
 
             case "network_security":
@@ -127,6 +130,10 @@ public class DashboardFragment extends Fragment {
 
             case "cyber_quiz":
                 NavHostFragment.findNavController(this).navigate(R.id.cyberQuizFragment);
+                break;
+
+            case "password_generator":
+                NavHostFragment.findNavController(this).navigate(R.id.passwordGeneratorFragment);
                 break;
 
 
