@@ -51,7 +51,13 @@ public class DrawerActivity extends AppCompatActivity {
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_dashboard, R.id.nav_profile, R.id.nav_slideshow).setOpenableLayout(drawer).build();
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_dashboard,
+                R.id.nav_profile,
+                R.id.nav_about,
+                R.id.nav_help,
+                R.id.nav_privacy
+        ).setOpenableLayout(drawer).build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_drawer);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
@@ -63,10 +69,23 @@ public class DrawerActivity extends AppCompatActivity {
                 drawer.closeDrawers();
                 return true;
             } else if (id == R.id.nav_share) {
-                //
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                String text = "Check out CyberGuard! https://cybeguard.tn";
+                shareIntent.putExtra(Intent.EXTRA_TEXT, text);
+                startActivity(Intent.createChooser(shareIntent, "Share via"));
+                drawer.closeDrawers();
                 return true;
             } else if (id == R.id.nav_rate) {
-                //
+                String packageName = getPackageName();
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            android.net.Uri.parse("market://details?id=" + packageName)));
+                } catch (android.content.ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            android.net.Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
+                }
+                drawer.closeDrawers();
                 return true;
             } else {
                 boolean handled = NavigationUI.onNavDestinationSelected(item, navController);

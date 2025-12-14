@@ -17,11 +17,24 @@
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
 
+
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.cyberguard.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_about"
+        android:name="com.example.cyberguard.ui.info.AboutFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/nav_help"
+        android:name="com.example.cyberguard.ui.info.HelpFragment"
+        android:label="@string/menu_help"
+        tools:layout="@layout/fragment_help" />
+
+    <fragment
+        android:id="@+id/nav_privacy"
+        android:name="com.example.cyberguard.ui.info.PrivacyFragment"
+        android:label="@string/menu_privacy"
+        tools:layout="@layout/fragment_privacy" />
 
     <fragment
         android:id="@+id/breachCheckFragment"
@@ -94,6 +107,5 @@
         android:name="com.example.cyberguard.ui.PasswordGeneratorFragment"
         android:label="Password Generator"
         tools:layout="@layout/fragment_password_generator" />
-
 
 </navigation>
