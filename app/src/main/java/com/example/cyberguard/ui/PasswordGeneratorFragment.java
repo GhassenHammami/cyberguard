@@ -3,12 +3,16 @@ package com.example.cyberguard.ui;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,34 +26,30 @@ import com.example.cyberguard.R;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.widget.ProgressBar;
-
 
 public class PasswordGeneratorFragment extends Fragment {
 
-    private static final int MIN_LEN = 8;
+    private static final int MIN_LEN = 2;
     private static final int MAX_LEN = 32;
+    private static final int DEFAULT_LEN = 16;
 
     private TextView tvPassword, tvLengthLabel, tvStrength, tvStrengthHint;
     private SeekBar seekLength;
     private CheckBox cbUpper, cbLower, cbNumbers, cbSymbols;
     private ProgressBar strengthBar;
 
-
     private final SecureRandom secureRandom = new SecureRandom();
 
     private static final String UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String LOWER = "abcdefghijklmnopqrstuvwxyz";
-    private static final String NUMS  = "0123456789";
-    private static final String SYMS  = "!@#$%^&*()-_=+[]{};:,.?/<>";
+    private static final String NUMS = "0123456789";
+    private static final String SYMS = "!@#$%^&*()-_=+[]{};:,.?/<>";
+    private static final String DEFAULT_TEXT = "Tap Generate";
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View v = inflater.inflate(R.layout.fragment_password_generator, container, false);
 
         tvPassword = v.findViewById(R.id.tvPassword);
@@ -57,7 +57,6 @@ public class PasswordGeneratorFragment extends Fragment {
         tvStrength = v.findViewById(R.id.tvStrength);
         strengthBar = v.findViewById(R.id.strengthBar);
         tvStrengthHint = v.findViewById(R.id.tvStrengthHint);
-
 
         seekLength = v.findViewById(R.id.seekLength);
 
@@ -71,38 +70,49 @@ public class PasswordGeneratorFragment extends Fragment {
 
         seekLength.setMax(MAX_LEN - MIN_LEN);
 
-        int defaultLen = 16;
-        seekLength.setProgress(defaultLen - MIN_LEN);
-        updateLengthLabel(defaultLen);
-        updateStrengthLabel(defaultLen);
+        seekLength.setProgress(DEFAULT_LEN - MIN_LEN);
+        updateLengthLabel(DEFAULT_LEN);
+        updateStrengthLabel(DEFAULT_LEN);
 
         seekLength.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 int len = MIN_LEN + progress;
                 updateLengthLabel(len);
                 updateStrengthLabel(len);
             }
-            @Override public void onStartTrackingTouch(SeekBar seekBar) {}
-            @Override public void onStopTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
 
-        View.OnClickListener regenerateOnChange = vv -> {
-            if (!"Tap Generate".contentEquals(tvPassword.getText())) {
+        CompoundButton.OnCheckedChangeListener enforceAtLeastOne = (buttonView, isChecked) -> {
+            if (!isChecked && getCheckedCount() == 0) {
+                buttonView.setChecked(true);
+                Toast.makeText(requireContext(), "At least one option must be selected", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (!DEFAULT_TEXT.contentEquals(tvPassword.getText())) {
                 generateAndDisplay();
             }
-            updateStrengthLabel(getSelectedLength());
         };
 
-        cbUpper.setOnClickListener(regenerateOnChange);
-        cbLower.setOnClickListener(regenerateOnChange);
-        cbNumbers.setOnClickListener(regenerateOnChange);
-        cbSymbols.setOnClickListener(regenerateOnChange);
+        cbUpper.setOnCheckedChangeListener(enforceAtLeastOne);
+        cbLower.setOnCheckedChangeListener(enforceAtLeastOne);
+        cbNumbers.setOnCheckedChangeListener(enforceAtLeastOne);
+        cbSymbols.setOnCheckedChangeListener(enforceAtLeastOne);
 
         btnGenerate.setOnClickListener(vv -> generateAndDisplay());
 
         btnCopy.setOnClickListener(vv -> {
             String pwd = tvPassword.getText().toString();
-            if (pwd.trim().isEmpty() || "Tap Generate".equals(pwd)) {
+            if (pwd.trim().isEmpty() || DEFAULT_TEXT.equals(pwd)) {
                 Toast.makeText(requireContext(), "Generate a password first", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -111,6 +121,15 @@ public class PasswordGeneratorFragment extends Fragment {
         });
 
         return v;
+    }
+
+    private int getCheckedCount() {
+        int c = 0;
+        if (cbUpper.isChecked()) c++;
+        if (cbLower.isChecked()) c++;
+        if (cbNumbers.isChecked()) c++;
+        if (cbSymbols.isChecked()) c++;
+        return c;
     }
 
     private void generateAndDisplay() {
@@ -124,10 +143,10 @@ public class PasswordGeneratorFragment extends Fragment {
 
         List<Character> chars = new ArrayList<>();
 
-        if (cbUpper.isChecked()) chars.add(randomCharFrom(UPPER));
-        if (cbLower.isChecked()) chars.add(randomCharFrom(LOWER));
-        if (cbNumbers.isChecked()) chars.add(randomCharFrom(NUMS));
-        if (cbSymbols.isChecked()) chars.add(randomCharFrom(SYMS));
+        if (cbUpper.isChecked() && chars.size() < length) chars.add(randomCharFrom(UPPER));
+        if (cbLower.isChecked() && chars.size() < length) chars.add(randomCharFrom(LOWER));
+        if (cbNumbers.isChecked() && chars.size() < length) chars.add(randomCharFrom(NUMS));
+        if (cbSymbols.isChecked() && chars.size() < length) chars.add(randomCharFrom(SYMS));
 
         while (chars.size() < length) {
             chars.add(randomCharFrom(pool));
@@ -169,50 +188,36 @@ public class PasswordGeneratorFragment extends Fragment {
     }
 
     private void copyToClipboard(String text) {
-        ClipboardManager clipboard =
-                (ClipboardManager) requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipboardManager clipboard = (ClipboardManager) requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("Generated Password", text);
         clipboard.setPrimaryClip(clip);
     }
 
     private void updateStrengthLabel(int length) {
-        int categories = 0;
-        if (cbUpper.isChecked()) categories++;
-        if (cbLower.isChecked()) categories++;
-        if (cbNumbers.isChecked()) categories++;
-        if (cbSymbols.isChecked()) categories++;
-
-        int score = 0;
-
-        if (length >= 8) score += 20;
-        if (length >= 12) score += 20;
-        if (length >= 16) score += 20;
-        if (length >= 20) score += 20;
-        if (length >= 24) score += 10;
-
-        score += categories * 10;
-
-        if (score > 100) score = 100;
-
         String label;
         int color;
 
-        if (categories <= 1 || length < 10 || score < 40) {
+        if (length <= 3) {
+            label = "Very weak";
+            color = Color.parseColor("#FF0000");
+        } else if (length <= 8) {
             label = "Weak";
-            color = Color.parseColor("#E53935");
-        } else if (score < 70) {
-            label = "Medium";
-            color = Color.parseColor("#FB8C00");
-        } else {
+            color = Color.parseColor("#FFB370");
+        } else if (length <= 11) {
             label = "Strong";
-            color = Color.parseColor("#43A047");
+            color = Color.parseColor("#D5F2A5");
+        } else {
+            label = "Very strong";
+            color = Color.parseColor("#9AE437");
         }
 
-        tvStrength.setText("Strength: " + label);
-        tvStrengthHint.setText("Score: " + score + "/100");
-        strengthBar.setProgress(score);
+        int progress = (int) Math.round(((length - MIN_LEN) * 100.0) / (MAX_LEN - MIN_LEN));
+        if (progress < 0) progress = 0;
+        if (progress > 100) progress = 100;
 
+        tvStrength.setText("Strength");
+        tvStrengthHint.setText(label);
+        strengthBar.setProgress(progress);
         strengthBar.setProgressTintList(ColorStateList.valueOf(color));
     }
-
 }
